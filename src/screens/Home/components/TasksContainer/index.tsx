@@ -1,10 +1,11 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { styles } from "./styles";
+import { TasksContainerHeader } from "../TasksContainerHeader";
 
 export function TasksContainer(){
     return(
         <View style={styles.container}>
-            <Text>Home Content</Text>
+            <TasksContainerHeader />
         </View>
     )
 }
