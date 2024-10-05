@@ -3,21 +3,18 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: '#131016',
-        padding: 24,
-        paddingTop: 48,
     },
     header: {
         flexDirection: 'row',
         width: '100%',
-        marginTop: 42,
-        marginBottom: 42,
         justifyContent: 'center',
+        paddingVertical:40,
     },
     form: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
+        paddingHorizontal: 24,
         gap: 4,
     },
     input: {
