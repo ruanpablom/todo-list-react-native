@@ -1,7 +1,7 @@
 import { Image, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import { useState } from "react";
-import { HomeContent } from "./components/Content";
+import { TasksContainer } from "./components/TasksContainer";
 
 export function Home() {
     const [isFocusedInput, setIsFocusedInput] = useState(false);
@@ -23,7 +23,7 @@ export function Home() {
                     <Image source={require('../../../assets/plus.png')} />
                 </TouchableOpacity>
             </View>
-            <HomeContent />
+            <TasksContainer />
         </View>
     )
 }
