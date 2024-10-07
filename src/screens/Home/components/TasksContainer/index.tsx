@@ -3,6 +3,7 @@ import { styles } from "./styles";
 import { TasksContainerHeader } from "../TasksContainerHeader";
 import { TaskCard } from "../TaskCard";
 import { useState } from "react";
+import { TasksEmpty } from "../TasksEmpty";
 
 export function TasksContainer(){
     const [tasks, setTasks] = useState([
@@ -56,6 +57,9 @@ export function TasksContainer(){
                         onToggle={() => handleToggleTask(item.id)} 
                         onDelete={() => handleDeleteTask(item.id)} 
                     />
+                )}
+                ListEmptyComponent={() => (
+                    <TasksEmpty />
                 )}
             />
             {/* <TaskCard task={tasks[0]} onToggle={() => handleToggleTask(tasks[0].id)} onDelete={() => handleDeleteTask(tasks[0].id)} /> */}
