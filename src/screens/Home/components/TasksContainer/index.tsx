@@ -4,16 +4,14 @@ import { TasksContainerHeader } from "../TasksContainerHeader";
 import { TaskCard } from "../TaskCard";
 import { useState } from "react";
 import { TasksEmpty } from "../TasksEmpty";
+import { Task } from "../../../../models/task";
 
-export function TasksContainer(){
-    const [tasks, setTasks] = useState([
-        {id: 1, description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isCompleted: false},
-        {id: 2, description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isCompleted: false},
-        {id: 3, description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isCompleted: false},
-        {id: 4, description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isCompleted: false},
-        {id: 5, description: 'Integer urna interdum massa libero auctor neque turpis turpis semper.', isCompleted: false},
-    ])
+type TasksContainerProps = {
+    tasks: Task[];
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+}
 
+export function TasksContainer({tasks, setTasks}: TasksContainerProps){
     function handleToggleTask(id: number){
         const updatedTasks = tasks.map(task => {
             if(task.id === id){

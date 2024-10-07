@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
         borderColor: '#3D3D3D',
         borderWidth: 1,
         borderRadius: 6,
+        color: '#F2F2F2'
     },
     inputFocused:{
         borderColor: '#5E60CE',
