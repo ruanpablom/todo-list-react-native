@@ -23,7 +23,7 @@ export function TasksContainer(){
             }
             return task
         })
-        
+
         updatedTasks.sort((a, b) => Number(a.isCompleted) - Number(b.isCompleted))
 
         setTasks(updatedTasks)
@@ -35,9 +35,17 @@ export function TasksContainer(){
         setTasks(updatedTasks)
     }
 
+    const tasksCounter = tasks.reduce((acc, task) => {
+        acc.created += 1;
+        if (task.isCompleted) {
+            acc.completed += 1;
+        }
+        return acc;
+    }, {created: 0, completed: 0})
+
     return(
         <View style={styles.container}>
-            <TasksContainerHeader />
+            <TasksContainerHeader tasksCounter={tasksCounter} />
             <FlatList 
                 data={tasks}
                 ItemSeparatorComponent={() => <View style={styles.separator} />}
