@@ -1,4 +1,4 @@
-import { FlatList, View } from "react-native";
+import { Alert, FlatList, View } from "react-native";
 import { styles } from "./styles";
 import { TasksContainerHeader } from "../TasksContainerHeader";
 import { TaskCard } from "../TaskCard";
@@ -29,9 +29,19 @@ export function TasksContainer({tasks, setTasks}: TasksContainerProps){
     }
 
     function handleDeleteTask(id: number){
-        const updatedTasks = tasks.filter(task => task.id !== id)
-
-        setTasks(updatedTasks)
+        Alert.alert('Remover Task', `Deseja remover ${tasks.find(task => task.id === id)?.description}?`, [
+            {
+                text: 'Sim',
+                onPress: () => {
+                    setTasks(prevState => prevState.filter(task => task.id !== id));
+                    Alert.alert("Deletado")
+                }
+            },
+            {
+                text: 'Não',
+                style: 'cancel'
+            }
+        ])
     }
 
     const tasksCounter = tasks.reduce((acc, task) => {
