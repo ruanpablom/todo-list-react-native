@@ -7,5 +7,8 @@ export const styles = StyleSheet.create({
         marginTop: -24,
         zIndex: -1,
         padding: 24
+    },
+    separator:{
+        height: 8,
     }
 })

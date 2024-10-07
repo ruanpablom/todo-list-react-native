@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { FlatList, View } from "react-native";
 import { styles } from "./styles";
 import { TasksContainerHeader } from "../TasksContainerHeader";
 import { TaskCard } from "../TaskCard";
@@ -23,6 +23,8 @@ export function TasksContainer(){
             }
             return task
         })
+        
+        updatedTasks.sort((a, b) => Number(a.isCompleted) - Number(b.isCompleted))
 
         setTasks(updatedTasks)
     }
@@ -36,7 +38,19 @@ export function TasksContainer(){
     return(
         <View style={styles.container}>
             <TasksContainerHeader />
-            <TaskCard task={tasks[0]} onToggle={() => handleToggleTask(tasks[0].id)} onDelete={() => handleDeleteTask(tasks[0].id)} />
+            <FlatList 
+                data={tasks}
+                ItemSeparatorComponent={() => <View style={styles.separator} />}
+                keyExtractor={item => String(item.id)}
+                renderItem={({item}) => (
+                    <TaskCard 
+                        task={item} 
+                        onToggle={() => handleToggleTask(item.id)} 
+                        onDelete={() => handleDeleteTask(item.id)} 
+                    />
+                )}
+            />
+            {/* <TaskCard task={tasks[0]} onToggle={() => handleToggleTask(tasks[0].id)} onDelete={() => handleDeleteTask(tasks[0].id)} /> */}
         </View>
     )
 }
